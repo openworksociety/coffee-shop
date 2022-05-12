@@ -47,8 +47,7 @@ td {
 				<thead>
 					<tr>
 						<th scope="col">#</th>
-						<th scope="col">Avatar</th>
-						<th scope="col">Menu Item</th>
+						<th scope="col">Product</th>
 						<th scope="col">Description</th>
 						<th scope="col">Price</th>
 						<th scope="col">Action</th>

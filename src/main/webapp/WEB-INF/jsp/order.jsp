@@ -30,7 +30,7 @@
 	<!--Navigation bar-->
 	<div id="nav-placeholder"></div>
 
-	<form:form method="GET" action="addCustomer" commandName="Residents">
+	<form:form>
 		<div class="container">
 			<div class="contentbar">
 				<!-- Start row -->
@@ -87,7 +87,7 @@
 															<form>
 																<div class="form-group">
 																	<div class="input-group">
-																		<input type="text" class="form-control"
+																		<input id="customerName" type="text" class="form-control"
 																			placeholder="Customer name" aria-label="Search"
 																			aria-describedby="button-addonTags">
 																	</div>
@@ -133,12 +133,12 @@
 												</div>
 											</div>
 											<div class="cart-footer text-right">
-												<button type="button" class="btn btn-info my-1">
-													<i class="ri-save-line mr-2"></i>Update Cart
+												<button type="button" onclick="checkout()" class="btn btn-success my-1">
+													Proceed	to Checkout<i class="ri-arrow-right-line ml-2"></i>
 												</button>
-												<a href="page-checkout.html" class="btn btn-success my-1">Proceed
+												<!-- <a href="page-checkout.html" class="btn btn-success my-1">Proceed
 													to Checkout<i class="ri-arrow-right-line ml-2"></i>
-												</a>
+												</a> -->
 											</div>
 										</div>
 									</div>
