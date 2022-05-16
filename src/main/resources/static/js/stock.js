@@ -17,7 +17,6 @@ function loadTable() {
 			for (let object of objects) {
 				trHTML += '<tr>';
 				trHTML += '<td>' + object['id'] + '</td>';
-				// trHTML += '<td><img width="50px" src="'+object['avatar']+'" class="avatar"></td>';
 				trHTML += '<td>' + object['name'] + '</td>';
 				trHTML += '<td>' + object['description'] + '</td>';
 				trHTML += '<td>' + object['price'] + '</td>';
@@ -85,16 +84,14 @@ function showUserEditBox(id) {
 	xhttp.send();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			const objects = JSON.parse(this.responseText);
-			const user = objects['user'];
-			console.log(user);
+			const object = JSON.parse(this.responseText);
 			Swal.fire({
 				title: 'Edit User',
 				html:
-					'<input id="id" type="hidden" value=' + user['id'] + '>' +
-					'<input id="name" class="swal2-input" placeholder="Product Name" value="' + user['name'] + '">' +
-					'<input id="description" class="swal2-input" placeholder="Description" value="' + user['description'] + '">' +
-					'<input id="price" class="swal2-input" placeholder="Price" value="' + user['price'] + '">',
+					'<input id="id" type="hidden" value=' + object['id'] + '>' +
+					'<input id="name" class="swal2-input" placeholder="Product Name" value="' + object['name'] + '">' +
+					'<input id="description" class="swal2-input" placeholder="Description" value="' + object['description'] + '">' +
+					'<input id="price" class="swal2-input" placeholder="Price" value="' + object['price'] + '">',
 				focusConfirm: false,
 				preConfirm: () => {
 					userEdit();
@@ -111,11 +108,10 @@ function userEdit() {
 	const price = document.getElementById("price").value;
 
 	const xhttp = new XMLHttpRequest();
-	xhttp.open("PUT", API_HOST_URL + "/api/users/update");
+	xhttp.open("PUT", API_HOST_URL + "/api/products/update");
 	xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xhttp.send(JSON.stringify({
-		"id": id, "name": name, "description": description, "price": price,
-		"avatar": "https://www.mecallapi.com/users/cat.png"
+		"id": id, "name": name, "description": description, "price": price
 	}));
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -138,7 +134,7 @@ function userEdit() {
 
 function userDelete(id) {
 	const xhttp = new XMLHttpRequest();
-	xhttp.open("DELETE", API_HOST_URL + "/api/users/delete/" + id);
+	xhttp.open("DELETE", API_HOST_URL + "/api/products/delete/" + id);
 	xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xhttp.send();
 	xhttp.onreadystatechange = function() {

@@ -57,25 +57,7 @@
 																<th scope="col" class="text-right">Total</th>
 															</tr>
 														</thead>
-														<tbody>
-															<c:forEach items="${items}" var="item">
-																<tr>
-																	<th scope="row"><c:out value="${item.id}" /></th>
-																	<td><c:out value="${item.name}" /></td>
-																	<td>
-																		<div class="form-group mb-0">
-																			<input type="number" class="form-control cart-qty"
-																				name="cartQty<c:out value="${item.id}" />"
-																				id="cartQty<c:out value="${item.id}" />" value="0"
-																				min="0" max="10"
-																				onchange="onQtyChangeEvent(this.value,<c:out value="${item.id}"/>,<c:out value="${item.price}"/>, ${fn:length(items)})">
-																		</div>
-																	</td>
-																	<td><c:out value="$${item.price}" /></td>
-																	<td class="text-right"
-																		id="total-cartQty<c:out value="${item.id}" />">$0</td>
-																</tr>
-															</c:forEach>
+														<tbody id="mytable">
 														</tbody>
 													</table>
 												</div>

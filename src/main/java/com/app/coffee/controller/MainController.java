@@ -15,11 +15,6 @@ public class MainController {
 
 	private static List<Person> persons = new ArrayList<Person>();
 
-	static {
-		persons.add(new Person("Bill", "Gates"));
-		persons.add(new Person("Steve", "Jobs"));
-	}
-
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public String login(Model model) {
 		return "login";
@@ -27,14 +22,11 @@ public class MainController {
 
 	@RequestMapping(value = { "/index" }, method = RequestMethod.GET)
 	public String index(Model model) {
-		String message = "Hello Spring Boot + JSP";
-		model.addAttribute("message", message);
 		return "index";
 	}
 
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
 	public String register(Model model) {
-		model.addAttribute("message", "User registered Successfully.");
 		return "welcome";
 	}
 }

@@ -8,9 +8,12 @@
 <script src="jquery/jquery-3.6.0.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-	crossorigin="anonymous">
+	rel="stylesheet">
+<script src="js/stock.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     $(function(){
       $("#nav-placeholder").load("nav.html");
@@ -55,19 +58,14 @@ td {
 				</thead>
 				<tbody id="mytable">
 					<tr>
-						<th scope="row" colspan="5">Loading...</th>
+						<th scope="row" colspan="5" class="spinner-border text-primary"
+							role="status"><span class="visually-hidden">Loading...</span></th>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	
-	<script src="js/stock.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-		crossorigin="anonymous"></script>
+
+
 </body>
 </html>

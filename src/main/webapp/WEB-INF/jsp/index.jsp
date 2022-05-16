@@ -15,5 +15,6 @@
 
 	<!--Navigation bar-->
 	<div id="nav-placeholder"></div>
+	
 </body>
 </html>

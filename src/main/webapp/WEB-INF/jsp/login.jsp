@@ -24,7 +24,7 @@
 			</h1>
 
 			<div class="form-floating">
-				<input type="email" class="form-control" id="username"
+				<input type="text" class="form-control" id="username"
 					placeholder="name@example.com"> <label for="floatingInput">Email
 					address</label>
 			</div>

@@ -43,12 +43,6 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>app.coffee.service</groupId>
-			<artifactId>coffee-shop-service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 
 	<build>

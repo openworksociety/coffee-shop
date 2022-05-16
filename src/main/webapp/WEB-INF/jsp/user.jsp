@@ -50,7 +50,8 @@
 				</thead>
 				<tbody id="mytable">
 					<tr>
-						<th scope="row" colspan="5">Loading...</th>
+						<th scope="row" colspan="5" class="spinner-border text-primary"
+							role="status"><span class="visually-hidden">Loading...</span></th>
 					</tr>
 				</tbody>
 			</table>
@@ -58,7 +59,7 @@
 	</div>
 
 	<script src="js/user.js"></script>
-	
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
 	<script
