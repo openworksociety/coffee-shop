@@ -57,14 +57,10 @@ function userCreate() {
 	xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xhttp.send(JSON.stringify({
 		"name": name, "description": description, "price": price,
-		"avatar": "https://www.mecallapi.com/users/cat.png", "modifiedBy": userId, "createdBy": userId
+		 "modifiedBy": userId, "createdBy": userId
 	}));
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			//			const objects = JSON.parse(this.responseText);
-			//			Swal.fire(objects['message']);
-			//			loadTable();
-
 			Swal.fire({
 				text: "Product Created Successfully",
 				icon: 'success',
@@ -117,10 +113,6 @@ function userEdit() {
 	}));
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			//			const objects = JSON.parse(this.responseText);
-			//			Swal.fire(objects['message']);
-			//			loadTable();
-
 			Swal.fire({
 				text: "Product Updated Successfully",
 				icon: 'success',
@@ -141,9 +133,6 @@ function userDelete(id) {
 	xhttp.send();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4) {
-			//      const objects = JSON.parse(this.responseText);
-			//      Swal.fire(objects['message']);
-			//      loadTable();
 			Swal.fire({
 				text: "Product Deleted Successfully",
 				icon: 'success',

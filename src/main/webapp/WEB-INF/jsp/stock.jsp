@@ -16,7 +16,12 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 	$(function() {
-		$("#nav-placeholder").load("nav.html");
+		var name = localStorage.getItem("jwt");
+		if(name=="admin"){
+			$("#nav-placeholder").load("nav.html");
+		}else{
+			$("#nav-placeholder").load("user-nav.html");
+		}
 	});
 </script>
 <style type="text/css">

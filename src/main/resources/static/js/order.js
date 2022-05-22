@@ -39,9 +39,29 @@ function loadOrders() {
 function confirmCheckout() {
 
 
+
 	const tax = document.getElementById("tax").innerHTML.replace("Rs.", "");
 	const subTotal = document.getElementById("subTotal").innerHTML.replace("Rs.", "");
 	const total = document.getElementById("total").innerHTML.replace("Rs.", "");
+
+	if (total == "" || total == 0) {
+		Swal.fire({
+			text: "Please Select Items to checkout",
+			icon: 'error',
+		});
+		return;
+	}
+	
+	const customerName = document.getElementById("customerName").value;
+	const contactNo = document.getElementById("contactNo").value;
+	if (customerName == "" || contactNo == "") {
+		Swal.fire({
+			text: "Please Enter Customer Detail",
+			icon: 'error',
+		});
+		return;
+	}
+	
 
 	if (total > 0) {
 		Swal.fire({
@@ -86,7 +106,7 @@ function checkout() {
 	xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xhttp.send(JSON.stringify({
 		"name": name, "contact": contact, "taxAmount": tax, "subTotalAmount": subTotal, "totalAmount": total,
-		"note": specialNotes, "modifiedBy" : userId, "createdBy": userId
+		"note": specialNotes, "modifiedBy": userId, "createdBy": userId
 	}));
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {

@@ -25,7 +25,12 @@
 	rel="stylesheet">
 <script>
 	$(function() {
-		$("#nav-placeholder").load("nav.html");
+		var name = localStorage.getItem("jwt");
+		if(name=="admin"){
+			$("#nav-placeholder").load("nav.html");
+		}else{
+			$("#nav-placeholder").load("user-nav.html");
+		}
 	});
 </script>
 </head>
@@ -104,16 +109,16 @@
 															<table class="table table-borderless text-right">
 																<tbody>
 																	<tr>
-																		<td>Sub Total :</td>
-																		<td id="subTotal">$0</td>
+																		<td>Sub Total:</td>
+																		<td id="subTotal">0</td>
 																	</tr>
 																	<tr>
 																		<td>Tax(5%) :</td>
-																		<td id="tax">$0</td>
+																		<td id="tax">0</td>
 																	</tr>
 																	<tr>
-																		<td class="f-w-7 font-18"><h4>Amount :</h4></td>
-																		<td class="f-w-7 font-18" id="total"><h4>$0</h4></td>
+																		<td class="f-w-7 font-18"><h4>Amount:</h4></td>
+																		<td class="f-w-7 font-18" id="total">0</td>
 																	</tr>
 																</tbody>
 															</table>

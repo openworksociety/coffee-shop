@@ -1,5 +1,5 @@
 var jwt = localStorage.getItem("jwt");
-if (jwt == null) {
+if (jwt == null|| jwt !="admin") {
 	window.location.href = '/login';
 }
 
@@ -60,20 +60,6 @@ function onSubmitReport() {
 		showSalesReport("/api/reports/showOrderHistoryReport");
 	}else{
 		document.getElementById("showReport").innerHTML = "";
-	}
-}
-
-function onReportSelectionChange() {
-	var reportSelection = document.getElementById("reportSelection");
-	var selectedReport = reportSelection.value;
-	//var trHTML = '<H2> you have selected : ' + selectedReport + '</H2>';
-	//document.getElementById("showReport").innerHTML = trHTML;
-
-	var orderTableTAG = document.getElementById("orderTable");
-	if (selectedReport == 3) {
-		orderTableTAG.style.display = "block";
-	} else {
-		orderTableTAG.style.display = "none";
 	}
 }
 

@@ -1,5 +1,5 @@
 var jwt = localStorage.getItem("jwt");
-if (jwt == null) {
+if (jwt == null || jwt !="admin") {
 	window.location.href = '/login'
 }
 
@@ -46,7 +46,6 @@ function showUserCreateBox() {
 			'<input id="lname" class="swal2-input" placeholder="Last">' +
 			'<input id="username" class="swal2-input" placeholder="Username">' +
 			'<input id="password" class="swal2-input" placeholder="Password">',
-		//			'<input id="email" class="swal2-input" placeholder="Email">',
 		focusConfirm: false,
 		preConfirm: () => {
 			userCreate();
@@ -71,8 +70,6 @@ function userCreate() {
 	}));
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			//			const objects = JSON.parse(this.responseText);
-			//			Swal.fire(objects['message']);
 			loadTable();
 		}
 	};
@@ -95,7 +92,6 @@ function showUserEditBox(id) {
 					'<input id="lname" class="swal2-input" placeholder="Last" value="' + user['lname'] + '">' +
 					'<input id="username" class="swal2-input" placeholder="Username" value="' + user['username'] + '">' +
 					'<input id="password" class="swal2-input" placeholder="Password" value="' + user['password'] + '">',
-				// '<input id="email" class="swal2-input" placeholder="Email" value="'+user['email']+'">',
 				focusConfirm: false,
 				preConfirm: () => {
 					userEdit();
@@ -123,9 +119,6 @@ function userEdit() {
 	}));
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			//      const objects = JSON.parse(this.responseText);
-			//      Swal.fire(objects['message']);
-
 			Swal.fire({
 				text: "User Updated Successfully",
 				icon: 'success',
@@ -146,10 +139,6 @@ function userDelete(id) {
 	xhttp.send();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4) {
-			//			const objects = JSON.parse(this.responseText);
-			//			Swal.fire(objects['message']);
-			//			loadTable();
-
 			Swal.fire({
 				text: "User Deleted Successfully",
 				icon: 'success',

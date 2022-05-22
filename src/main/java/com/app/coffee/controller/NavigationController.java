@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class NavigationController {
 
+	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
+	public String login(Model model) {
+		return "login";
+	}
+
 	@RequestMapping(value = { "/order" }, method = RequestMethod.GET)
 	public String order(Model model) {
 		return "order";
