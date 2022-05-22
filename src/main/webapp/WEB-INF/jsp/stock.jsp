@@ -15,9 +15,9 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    $(function(){
-      $("#nav-placeholder").load("nav.html");
-    });
+	$(function() {
+		$("#nav-placeholder").load("nav.html");
+	});
 </script>
 <style type="text/css">
 body {
@@ -37,7 +37,11 @@ td {
 	<div class="container">
 		<div class="d-flex bd-highlight mb-3">
 			<div class="me-auto p-2 bd-highlight">
-				<h2>Stock
+				<h2>Stock</h2>
+			</div>
+			<div class="p-2 bd-highlight">
+				<button type="button" class="btn btn-secondary"
+					onclick="showAllItems()">Show deactivated</button>
 			</div>
 			<div class="p-2 bd-highlight">
 				<button type="button" class="btn btn-secondary"
@@ -46,13 +50,13 @@ td {
 		</div>
 
 		<div class="table-responsive">
-			<table class="table">
-				<thead>
+			<table class="table table-hover">
+				<thead class="thead-light">
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Product</th>
 						<th scope="col">Description</th>
-						<th scope="col">Price</th>
+						<th scope="col">Price(Rs.)</th>
 						<th scope="col">Action</th>
 					</tr>
 				</thead>

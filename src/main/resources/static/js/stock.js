@@ -5,9 +5,9 @@ if (jwt == null) {
 
 const API_HOST_URL = "http://localhost:8085";
 
-function loadTable() {
+function loadTable(apiURL) {
 	const xhttp = new XMLHttpRequest();
-	xhttp.open("GET", API_HOST_URL + "/api/products");
+	xhttp.open("GET", API_HOST_URL + apiURL);
 	xhttp.send();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -29,7 +29,7 @@ function loadTable() {
 	};
 }
 
-loadTable();
+loadTable("/api/products");
 
 function showUserCreateBox() {
 	Swal.fire({
@@ -38,7 +38,7 @@ function showUserCreateBox() {
 			'<input id="id" type="hidden">' +
 			'<input id="name" class="swal2-input" placeholder="Product Name">' +
 			'<input id="description" class="swal2-input" placeholder="Decription">' +
-			'<input id="price" class="swal2-input" placeholder="Price">',
+			'<input id="price" type="number" min="0" class="swal2-input" placeholder="Price">',
 		focusConfirm: false,
 		preConfirm: () => {
 			userCreate();
@@ -50,27 +50,28 @@ function userCreate() {
 	const name = document.getElementById("name").value;
 	const description = document.getElementById("description").value;
 	const price = document.getElementById("price").value;
+	const userId = localStorage.getItem("id");
 
 	const xhttp = new XMLHttpRequest();
 	xhttp.open("POST", API_HOST_URL + "/api/products/create");
 	xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xhttp.send(JSON.stringify({
 		"name": name, "description": description, "price": price,
-		"avatar": "https://www.mecallapi.com/users/cat.png"
+		"avatar": "https://www.mecallapi.com/users/cat.png", "modifiedBy": userId, "createdBy": userId
 	}));
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-//			const objects = JSON.parse(this.responseText);
-//			Swal.fire(objects['message']);
-//			loadTable();
-			
+			//			const objects = JSON.parse(this.responseText);
+			//			Swal.fire(objects['message']);
+			//			loadTable();
+
 			Swal.fire({
 				text: "Product Created Successfully",
 				icon: 'success',
 				confirmButtonText: 'OK'
 			}).then((result) => {
 				if (result.isConfirmed) {
-					loadTable();
+					loadTable("/api/products");
 				}
 			});
 		}
@@ -91,7 +92,7 @@ function showUserEditBox(id) {
 					'<input id="id" type="hidden" value=' + object['id'] + '>' +
 					'<input id="name" class="swal2-input" placeholder="Product Name" value="' + object['name'] + '">' +
 					'<input id="description" class="swal2-input" placeholder="Description" value="' + object['description'] + '">' +
-					'<input id="price" class="swal2-input" placeholder="Price" value="' + object['price'] + '">',
+					'<input id="price" type="number"  min="0" class="swal2-input" placeholder="Price" value="' + object['price'] + '">',
 				focusConfirm: false,
 				preConfirm: () => {
 					userEdit();
@@ -106,12 +107,13 @@ function userEdit() {
 	const name = document.getElementById("name").value;
 	const description = document.getElementById("description").value;
 	const price = document.getElementById("price").value;
+	const userId = localStorage.getItem("id");
 
 	const xhttp = new XMLHttpRequest();
 	xhttp.open("PUT", API_HOST_URL + "/api/products/update");
 	xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xhttp.send(JSON.stringify({
-		"id": id, "name": name, "description": description, "price": price
+		"id": id, "name": name, "description": description, "price": price, "modifiedBy": userId
 	}));
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -125,7 +127,7 @@ function userEdit() {
 				confirmButtonText: 'OK'
 			}).then((result) => {
 				if (result.isConfirmed) {
-					loadTable();
+					loadTable("/api/products");
 				}
 			});
 		}
@@ -148,9 +150,13 @@ function userDelete(id) {
 				confirmButtonText: 'OK'
 			}).then((result) => {
 				if (result.isConfirmed) {
-					loadTable();
+					loadTable("/api/products");
 				}
 			});
 		}
 	};
+}
+
+function showAllItems() {
+	loadTable("/api/products/findAllDeactive");
 }

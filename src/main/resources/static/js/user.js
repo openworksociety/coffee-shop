@@ -5,9 +5,16 @@ if (jwt == null) {
 
 const API_HOST_URL = "http://localhost:8085";
 
+loadTable();
+
 function loadTable() {
+	showAllUsers("/api/users");
+}
+
+function showAllUsers(apiURL){
+	
 	const xhttp = new XMLHttpRequest();
-	xhttp.open("GET", API_HOST_URL + "/api/users");
+	xhttp.open("GET", API_HOST_URL + apiURL);
 	xhttp.send();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -17,7 +24,6 @@ function loadTable() {
 			for (let object of objects) {
 				trHTML += '<tr>';
 				trHTML += '<td>' + object['id'] + '</td>';
-				trHTML += '<td><img width="50px" src="' + object['avatar'] + '" class="avatar"></td>';
 				trHTML += '<td>' + object['fname'] + '</td>';
 				trHTML += '<td>' + object['lname'] + '</td>';
 				trHTML += '<td>' + object['username'] + '</td>';
@@ -30,8 +36,6 @@ function loadTable() {
 		}
 	};
 }
-
-loadTable();
 
 function showUserCreateBox() {
 	Swal.fire({
@@ -56,13 +60,14 @@ function userCreate() {
 	const username = document.getElementById("username").value;
 	const password = document.getElementById("password").value;
 	//	const email = document.getElementById("email").value;
+	const userId = localStorage.getItem("id");
 
 	const xhttp = new XMLHttpRequest();
 	xhttp.open("POST", API_HOST_URL + "/api/users/create");
 	xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xhttp.send(JSON.stringify({
 		"fname": fname, "lname": lname, "username": username, "password": password,
-		"avatar": "https://www.mecallapi.com/users/cat.png"
+		"avatar": "https://www.mecallapi.com/users/cat.png", "modifiedBy" : userId, "createdBy": userId
 	}));
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -107,13 +112,14 @@ function userEdit() {
 	const username = document.getElementById("username").value;
 	const password = document.getElementById("password").value;
 	//const email = document.getElementById("email").value;
+	const userId = localStorage.getItem("id");
 
 	const xhttp = new XMLHttpRequest();
 	xhttp.open("PUT", API_HOST_URL + "/api/users/update");
 	xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xhttp.send(JSON.stringify({
 		"id": id, "fname": fname, "lname": lname, "username": username, "password": password,
-		"avatar": "https://www.mecallapi.com/users/cat.png"
+		"avatar": "https://www.mecallapi.com/users/cat.png","modifiedBy" : userId
 	}));
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -155,4 +161,8 @@ function userDelete(id) {
 			});
 		}
 	};
+}
+
+function showAllItems() {
+	showAllUsers("/api/users/findAllDeactive");
 }

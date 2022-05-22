@@ -20,6 +20,9 @@
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <script>
 	$(function() {
 		$("#nav-placeholder").load("nav.html");
@@ -47,17 +50,20 @@
 										<div class="cart-container">
 											<div class="cart-head">
 												<div class="table-responsive">
-													<table class="table table-borderless">
-														<thead>
+													<table class="table table-hover">
+														<thead class="thead-light">
 															<tr>
 																<th scope="col">#</th>
 																<th scope="col">Product</th>
 																<th scope="col">Quantity</th>
-																<th scope="col">Price</th>
-																<th scope="col" class="text-right">Total</th>
+																<th scope="col" >Price(Rs.)</th>
+																<th scope="col" class="text-right">Total(Rs.)</th>
 															</tr>
 														</thead>
 														<tbody id="mytable">
+															<tr>
+																<th>Loading...</th>
+															</tr>
 														</tbody>
 													</table>
 												</div>
@@ -69,8 +75,9 @@
 															<form>
 																<div class="form-group">
 																	<div class="input-group">
-																		<input id="customerName" type="text" class="form-control"
-																			placeholder="Customer name" aria-label="Search"
+																		<input id="customerName" type="text"
+																			class="form-control" placeholder="Customer name"
+																			aria-label="Search"
 																			aria-describedby="button-addonTags">
 																	</div>
 																</div>
@@ -115,8 +122,9 @@
 												</div>
 											</div>
 											<div class="cart-footer text-right">
-												<button type="button" onclick="checkout()" class="btn btn-success my-1">
-													Proceed	to Checkout<i class="ri-arrow-right-line ml-2"></i>
+												<button type="button" onclick="confirmCheckout()"
+													class="btn btn-success my-1">
+													Proceed to Checkout<i class="ri-arrow-right-line ml-2"></i>
 												</button>
 												<!-- <a href="page-checkout.html" class="btn btn-success my-1">Proceed
 													to Checkout<i class="ri-arrow-right-line ml-2"></i>
@@ -134,8 +142,10 @@
 			</div>
 		</div>
 	</form:form>
-	
+
 	<script
-	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+		src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

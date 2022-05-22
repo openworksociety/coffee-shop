@@ -11,9 +11,7 @@
 <link rel="stylesheet" href="css/user.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-	crossorigin="anonymous">
+	rel="stylesheet">
 <script>
 	$(function() {
 		$("#nav-placeholder").load("nav.html");
@@ -31,16 +29,19 @@
 			</div>
 			<div class="p-2 bd-highlight">
 				<button type="button" class="btn btn-secondary"
+					onclick="showAllItems()">Show deactivated</button>
+			</div>
+			<div class="p-2 bd-highlight">
+				<button type="button" class="btn btn-secondary"
 					onclick="showUserCreateBox()">Create</button>
 			</div>
 		</div>
 
 		<div class="table-responsive">
-			<table class="table">
-				<thead>
+			<table class="table table-hover">
+				<thead class="thead-light">
 					<tr>
 						<th scope="col">#</th>
-						<th scope="col">Avatar</th>
 						<th scope="col">First</th>
 						<th scope="col">Last</th>
 						<th scope="col">Username</th>
@@ -63,8 +64,6 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-		crossorigin="anonymous"></script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
