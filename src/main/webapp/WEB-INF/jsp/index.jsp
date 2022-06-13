@@ -4,17 +4,14 @@
 <meta charset="ISO-8859-1">
 <title>Home</title>
 <script src="jquery/jquery-3.6.0.min.js"></script>
-<script src="js/index.js"></script>
 <script>
 	$(function() {
-		window.onload = function(){
 			var name = localStorage.getItem("jwt");
 			if(name=="admin"){
 				$("#nav-placeholder").load("nav.html");
 			}else{
 				$("#nav-placeholder").load("user-nav.html");
 			}
-		}
 	});
 </script>
 </head>

@@ -128,8 +128,8 @@ function onQtyChangeEvent(quantity, itemId, price, itemCount) {
 	document.getElementById("total-cartQty" + itemId).innerHTML = "Rs." + total;
 
 	var finalSubTotal = 0;
-	for (let i = 1; i <= itemCount; i++) {
-		var qtyTotal = document.getElementById("total-cartQty" + i).innerHTML.replace("Rs.", "");
+	for (let order of allOrders) {
+		var qtyTotal = document.getElementById("total-cartQty" + order['id']).innerHTML.replace("Rs.", "");
 		finalSubTotal += Number(qtyTotal);
 	}
 	document.getElementById("subTotal").innerHTML = "Rs." + finalSubTotal;
